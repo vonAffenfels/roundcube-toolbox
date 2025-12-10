@@ -330,9 +330,12 @@ $config['toolbox_detach_single'] = 1024 * 1024 * 25;
 $config['toolbox_detach_lifespan'] = 30;
 
 // storage folder's relative url for detached attachments
-// NOTE: you must create a dedicated folder in the root folder of the plugin writable by the web server
-// default value: 'plugins/toolbox/attachments'
-$config['toolbox_detach_storage'] = 'plugins/toolbox/attachments';
+// NOTE: you must create a dedicated folder in public_html folder writable by the web server
+//       additionally, you must exclude that folder in .htaccess file to avoid redirection to static.php
+//       add the following line to the .htaccess after "RewriteEngine On":
+//       RewriteCond %{REQUEST_URI} !^/attachments/$
+// default value: 'attachments'
+$config['toolbox_detach_storage'] = 'attachments';
 
 
 // PLUGIN LOG/DEBUG OPTIONS
