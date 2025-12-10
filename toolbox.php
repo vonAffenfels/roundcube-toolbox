@@ -70,7 +70,7 @@ class toolbox extends rcube_plugin
         $this->tools = $this->rcube->config->get('toolbox_tools');
         $this->skin = $this->rcube->config->get('skin');
         $this->skins_allowed = $this->rcube->config->get('skins_allowed');
-        $this->attachments = slashify($this->rcube->config->get('toolbox_detach_storage', 'plugins/toolbox/attachments'));
+        $this->attachments = slashify($this->rcube->config->get('toolbox_detach_storage', 'attachments'));
         $this->lifespan = $this->rcube->config->get('toolbox_detach_lifespan', 30);
         $this->detach_total = $this->rcube->config->get('toolbox_detach_total', 1024 * 1024 * 50);
         $this->detach_single = $this->rcube->config->get('toolbox_detach_single', 1024 * 1024 * 25);
@@ -446,7 +446,7 @@ class toolbox extends rcube_plugin
             $label = $plugin['label'];
             $args['id'] = md5(session_id() . microtime());
             $filename = urlencode($args['id'] . '_' . $args['name']);
-            $dest = slashify($rcmail->config->get('toolbox_detach_storage', 'plugins/toolbox/attachments')) . $filename;
+            $dest = slashify($rcmail->config->get('toolbox_detach_storage', 'attachments')) . $filename;
             if (copy($file, $dest)) {
                 if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == '1' || strtolower($_SERVER['HTTPS']) == 'on')) {
                     $s = "s";
